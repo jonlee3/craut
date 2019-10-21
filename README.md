@@ -1,9 +1,11 @@
 
 # CRAUT
 
+`CRAUT` is a tool used to generate and rank linkers for proteins using using a rod and angle model.
+
 Our software is designed as a simplified version of the code provided by the 2014 Heidelberg iGEM team. [Here is the their wiki page detailing their version of the software](http://2014.igem.org/Team:Heidelberg/Software/Linker_Software), and [here is their code](https://github.com/igemsoftware/Heidelberg_2014/tree/master/CRAUT).
 
-
+The linker is constructed using predetermined alpha helix and angle sequences as building blocks. Our version of the software only considers using 2 alpha helices and 1 angle segment. Linkers are ranked using a linear regression model made by the Heidelberg team, described [here](http://2014.igem.org/Team:Heidelberg/Modeling/Linker_Modeling).
 
 ## Build Instructions
 The software was developed using C++11, and uses the linear algebra libary [Eigen](http://eigen.tuxfamily.org/index.php?title=Main_Page). Version 3.3.7 of this library was used in development. If you wish to compile our code, then you will need to instruct the compiler on where to find the appropriate headers for Eigen. [Here is documentation on compiling Eigen](https://eigen.tuxfamily.org/dox/GettingStarted.html). The software was developed using Microsoft Visual Studio, but should still work for other compilers.
