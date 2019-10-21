@@ -16,7 +16,6 @@ int main(int argc, char** argv) {
 	std::string usage = "Invalid arguments. Usage: CRAUT.exe pdb_filepath [number of linkers to print]";
 	if (argc < 2)
 		std::cout << usage << std::endl;
-	//CrautNew craut("C:\\Users\\Jon\\Desktop\\CRAUT\\5xjh.pdb", 'A', helices, angles);
 	CrautNew craut(argv[1], 'A', helices, angles);
 	if(argc < 3)
 		craut.rank_and_print_linkers();
