@@ -1,11 +1,15 @@
 
 # CRAUT
 
-`CRAUT` is a tool used to generate and rank linkers for proteins using using a rod and angle model.
+Artificially circularizing a protein may enhance thermostability by restricting movement of the protein's termini. CRAUT is a tool that generates linkers used to circularize proteins, and ranks them in order of predicted enzyme activity. The linkers are constructed using a set of predetermined rigid alpha helix segments and angle segments. These segments were selected for predictability of their resulting structure in a protein. This predictable structure is used to create different weighting contributions, which are inputs to a linear regression model. This model predicts the resulting protein's activity when circularized with a given linker. The linkers are ranked based on predicted enzyme activity, and the best ones are outputted to the user.
 
-Our software is designed as a simplified version of the code provided by the 2014 Heidelberg iGEM team. [Here is the their wiki page detailing their version of the software](http://2014.igem.org/Team:Heidelberg/Software/Linker_Software), and [here is their code](https://github.com/igemsoftware/Heidelberg_2014/tree/master/CRAUT).
+This software was initially developed by the 2014 Heidelberg iGEM team. [Here is the their wiki page detailing their version of the software](http://2014.igem.org/Team:Heidelberg/Software/Linker_Software), and [here is their code](https://github.com/igemsoftware/Heidelberg_2014/tree/master/CRAUT). The linker modelling is described [here](http://2014.igem.org/Team:Heidelberg/Modeling/Linker_Modeling).
 
-The linker is constructed using predetermined alpha helix and angle sequences as building blocks. Our version of the software only considers using 2 alpha helices and 1 angle segment. Linkers are ranked using a linear regression model made by the Heidelberg team, described [here](http://2014.igem.org/Team:Heidelberg/Modeling/Linker_Modeling).
+We tried to use their software, but ran into various problems. We developed a new version of CRAUT, making use of their helix and angle segments, as well as their linear regression model. Our software was designed with the goal of being simpler, efficient, and easily extendable.
+
+Our version of the software is much simpler. We simplified the problem by only considering using 2 alpha helices and 1 angle segment. We also generate linkers by considering combinations of alpha helices, rather than generating geometric paths and finding similar linkers, as the Heidelberg team did.
+
+Our weighting components however do not match those used by the initial version of the software. This means that results generated from our software are unreliable until a new linear regression model is trained.
 
 ## Build Instructions
 The software was developed using C++11, and uses the linear algebra libary [Eigen](http://eigen.tuxfamily.org/index.php?title=Main_Page). Version 3.3.7 of this library was used in development. If you wish to compile our code, then you will need to instruct the compiler on where to find the appropriate headers for Eigen. [Here is documentation on compiling Eigen](https://eigen.tuxfamily.org/dox/GettingStarted.html). The software was developed using Microsoft Visual Studio, but should still work for other compilers.
